@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/" lang="QML">
+        <file>qml/main.qml</file>
+        <file>qml/App.qml</file>
+        <file>qml/Light.qml</file>
+    </qresource>
+</RCC>
