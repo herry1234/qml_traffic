@@ -14,7 +14,8 @@ QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    TrafficLight.cpp
+    TrafficLight.cpp \
+    testclass.cpp
 
 # Installation path
 # target.path =
@@ -24,5 +25,6 @@ SOURCES += main.cpp \
 #qtcAddDeployment()
 
 HEADERS += \
-    TrafficLight.h
+    TrafficLight.h \
+    testclass.h
 
