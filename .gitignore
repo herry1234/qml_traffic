@@ -5,3 +5,4 @@ QML.app/
 *.o
 qrc_qml.cpp
 moc_*.cpp
+*.pro.user

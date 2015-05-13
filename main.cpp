@@ -4,6 +4,7 @@
 //#include "qtquick2applicationviewer.h"
 #include "TrafficLight.h"
 #include "testclass.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -17,6 +18,42 @@ int main(int argc, char *argv[])
 //    //viewer.engine()->rootContext()->setContextProperty("lightbackend",&light);
 //    viewer.setMainQmlFile(QStringLiteral("qml/QML/main.qml"));
 //    viewer.showExpanded();
+
+    QQmlEngine engine2;
+
+if(0) {
+    QQmlContext *objectContext = new QQmlContext(engine2.rootContext());
+       QQmlComponent component(&engine);
+       QObject *obj = component.create(objectContext);
+       component.loadUrl(QUrl("http://171.71.46.197/qml-test/appwindow.qml"));
+       qDebug() << "root obj" << obj;
+
+    }
+
+if(0) {
+    testclass tc2;
+    QObject::connect(&engine,SIGNAL(objectCreated(QObject *, const QUrl& )), &tc2, SLOT(objready(QObject *, const QUrl& )));
+    engine.load(QUrl("http://171.71.46.197/qml-test/appwindow.qml"));
+
+}
+
+if(1) {
+
+    QEventLoop loop;
+    QTimer timer;
+    timer.setSingleShot(true);
+    QObject::connect(&timer, SIGNAL(timeout()), &loop, SLOT(quit()));
+    QObject::connect(&engine, SIGNAL(objectCreated(QObject *, const QUrl& )), &loop, SLOT(quit()));
+    timer.start(5000); //your predefined timeout
+    engine.load(QUrl("http://171.71.46.197/qml-test/appwindow.qml"));
+    loop.exec();
+    if (timer.isActive()) {
+        qDebug() << "rootobj status " << engine.rootObjects().value(0);
+    }
+
+}
+
+
 
 
     // Using QQuickView
